@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Home Assistant Kotlin</string>
+
+    <string name="main_fragment">Home</string>
+    <string name="settings_fragment">Ustawienia</string>
 </resources>
