@@ -3,11 +3,8 @@ package com.apeman.homeassistant
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.core.view.get
-import androidx.navigation.Navigation
-import androidx.navigation.findNavController
+import androidx.appcompat.widget.TooltipCompat
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -19,11 +16,19 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
         val navController = navHostFragment.navController
 
+        // Setting up the bottom navigation view
         findViewById<BottomNavigationView>(R.id.bottom_navigation_view).apply {
             setupWithNavController(navController)
+
+            // Disabling navigation tooltips on long click
+            for (i in 0 until menu.size()) {
+                val navigationItem = menu.getItem(i)
+                TooltipCompat.setTooltipText(findViewById(navigationItem.itemId), null)
+            }
         }
 
-        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+        // Displaying fragment name in toast
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             Toast.makeText(this, destination.label, Toast.LENGTH_LONG).show()
         }
     }
