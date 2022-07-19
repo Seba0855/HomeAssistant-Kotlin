@@ -1,4 +1,4 @@
-package com.apeman.homeassistant
+package com.apeman.homeassistant.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.widget.TooltipCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.apeman.homeassistant.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

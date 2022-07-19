@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/cardsFragment"
-        android:name="com.apeman.homeassistant.fragments.CardsFragment"
+        android:name="com.apeman.homeassistant.presentation.home.CardsFragment"
         android:label="fragment_cards"
         tools:layout="@layout/fragment_cards" />
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.apeman.homeassistant.fragments.SettingsFragment"
+        android:name="com.apeman.homeassistant.presentation.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

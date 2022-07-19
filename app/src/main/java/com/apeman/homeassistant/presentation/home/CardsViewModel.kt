@@ -1,4 +1,4 @@
-package com.apeman.homeassistant.fragments
+package com.apeman.homeassistant.presentation.home
 
 import androidx.lifecycle.ViewModel
 
