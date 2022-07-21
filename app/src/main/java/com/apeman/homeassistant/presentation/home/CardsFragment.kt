@@ -1,11 +1,12 @@
 package com.apeman.homeassistant.presentation.home
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.apeman.homeassistant.R
 
 class CardsFragment : Fragment() {
@@ -14,19 +15,23 @@ class CardsFragment : Fragment() {
         fun newInstance() = CardsFragment()
     }
 
-    private lateinit var viewModel: CardsViewModel
+    private val viewModel: CardsViewModel by viewModels()
+    private lateinit var tempIndicator: TextView
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_cards, container, false)
-    }
+    ): View? = inflater.inflate(R.layout.fragment_cards, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CardsViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        tempIndicator = view.findViewById(R.id.temperature_indicator)
+
+        viewModel.temperatureDataSet.observe(viewLifecycleOwner) { sensorData ->
+            tempIndicator.text = sensorData.temperature
+        }
     }
 
 }
