@@ -1,13 +1,12 @@
-package com.apeman.homeassistant.infrastructure.remote.blynk
+package com.apeman.homeassistant.repository.device
 
-import androidx.lifecycle.MutableLiveData
-import com.apeman.homeassistant.domain.model.BlynkTemperatureResponse
+import com.apeman.homeassistant.infrastructure.model.response.BlynkTemperatureResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
-interface RetrofitBlynkDataSource {
+interface TemperatureSensorRepository {
     /**
      * This method allows user to retrieve data from virtual pins using GET method.
      *
