@@ -1,6 +1,7 @@
 package com.apeman.homeassistant.repository.device
 
 import com.apeman.homeassistant.infrastructure.model.response.BlynkTemperatureResponse
+import com.apeman.homeassistant.infrastructure.model.response.BlynkTemperatureSensorResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -17,7 +18,7 @@ interface BlynkAPI {
     @GET("get")
     suspend fun getTemperatureSensorData (
         @QueryMap queryParameters: Map<String, String>
-    ): Response<BlynkTemperatureResponse>
+    ): Response<BlynkTemperatureSensorResponse>
 
     /**
      * Allows user to get information if doors are open or closed

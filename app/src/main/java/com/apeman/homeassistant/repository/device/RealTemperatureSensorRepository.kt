@@ -16,7 +16,11 @@ class RealTemperatureSensorRepository (
 
     override suspend fun mapTemperature(): String? {
         val response = blynkService().getTemperatureSensorData(
-            queryMapper(virtualPin = "V0"))
+            queryMapper(
+                virtualPin1 = "V0",
+                virtualPin2 = "V1"
+            )
+        )
 
         if (response.isSuccessful) {
             return temperatureMapper(response.body()).temperature
