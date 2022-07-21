@@ -30,7 +30,7 @@ class CardsFragment : Fragment() {
         tempIndicator = view.findViewById(R.id.temperature_indicator)
 
         viewModel.temperatureDataSet.observe(viewLifecycleOwner) { sensorData ->
-            tempIndicator.text = sensorData.temperature
+            tempIndicator.text = sensorData
         }
     }
 

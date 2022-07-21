@@ -1,4 +1,7 @@
 package com.apeman.homeassistant.domain.model
 
-class Device {
-}
+data class Device (
+    val name: String,
+    val room: String,
+    val virtualPin: String
+)

@@ -1,7 +1,8 @@
 package com.apeman.homeassistant.repository.device
 
-import com.apeman.homeassistant.domain.model.TemperatureSensorReadings
+import com.apeman.homeassistant.domain.model.TemperatureReadings
 
-interface DeviceRepository {
-    suspend fun getTemperature(): TemperatureSensorReadings
+interface TemperatureSensorRepository {
+    suspend fun mapTemperature(): String?
+    suspend fun getHumidity(): String
 }

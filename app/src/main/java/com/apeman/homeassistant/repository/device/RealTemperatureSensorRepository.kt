@@ -1,18 +1,32 @@
 package com.apeman.homeassistant.repository.device
 
-import com.apeman.homeassistant.domain.model.TemperatureSensorReadings
-import com.apeman.homeassistant.domain.usecase.TokenHelper
-import com.apeman.homeassistant.infrastructure.model.response.BlynkTemperatureResponse
+import android.util.Log
+import com.apeman.homeassistant.domain.model.TemperatureReadings
 import com.apeman.homeassistant.infrastructure.remote.blynk.RetrofitRemoteDataSource
+import com.apeman.homeassistant.mapper.domain.HumidityMapper
 import com.apeman.homeassistant.mapper.domain.QueryParamsMapper
-import retrofit2.Response
+import com.apeman.homeassistant.mapper.domain.TemperatureMapper
 
-class RealDeviceRepository : DeviceRepository {
-    private val blynkService = RetrofitRemoteDataSource().invoke()
-    private val mapper = QueryParamsMapper()
+class RealTemperatureSensorRepository (
+    private val blynkService: RetrofitRemoteDataSource,
+    private val temperatureMapper: TemperatureMapper,
+    private val humidityMapper: HumidityMapper,
+    private val queryMapper: QueryParamsMapper
+) : TemperatureSensorRepository {
 
-    override suspend fun getTemperature(): TemperatureSensorReadings =
-        blynkService.getTemperatureSensorData().body().temperature.map {
-            mapper(it)
+    override suspend fun mapTemperature(): String? {
+        val response = blynkService().getTemperatureSensorData(
+            queryMapper(virtualPin = "V0"))
+
+        if (response.isSuccessful) {
+            return temperatureMapper(response.body()).temperature
         }
+
+        Log.e("TemperatureSensorRepository error", response.message())
+        return "Error"
+    }
+
+    override suspend fun getHumidity(): String {
+        TODO("Not yet implemented")
+    }
 }

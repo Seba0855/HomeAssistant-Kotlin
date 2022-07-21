@@ -1,4 +1,5 @@
 package com.apeman.homeassistant.infrastructure.model.response
 
-class BlynkHumidityResponse {
-}
+data class BlynkHumidityResponse (
+    val humidityResponse: String?
+)

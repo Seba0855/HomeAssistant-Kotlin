@@ -1,19 +1,17 @@
-package com.apeman.homeassistant.infrastructure.repositories
+package com.apeman.homeassistant.infrastructure.remote.blynk
 
 import com.apeman.homeassistant.domain.usecase.TokenHelper
-import com.apeman.homeassistant.infrastructure.remote.blynk.RetrofitBlynkDataSource
+import com.apeman.homeassistant.repository.device.BlynkAPI
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RealBlynkRepository {
-    companion object {
-        fun create() : RetrofitBlynkDataSource {
-            val retrofitBuilder: Retrofit = Retrofit.Builder()
-                .baseUrl(TokenHelper.BLYNK_CLOUD_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+class RetrofitRemoteDataSource {
+    operator fun invoke(): BlynkAPI = run {
+        val retrofitBuilder: Retrofit = Retrofit.Builder()
+            .baseUrl(TokenHelper.BLYNK_CLOUD_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
 
-            return retrofitBuilder.create(RetrofitBlynkDataSource::class.java)
-        }
+        retrofitBuilder.create(BlynkAPI::class.java)
     }
 }

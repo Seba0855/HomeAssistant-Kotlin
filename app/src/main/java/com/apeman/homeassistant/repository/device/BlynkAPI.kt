@@ -6,7 +6,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
-interface TemperatureSensorRepository {
+interface BlynkAPI {
     /**
      * This method allows user to retrieve data from virtual pins using GET method.
      *

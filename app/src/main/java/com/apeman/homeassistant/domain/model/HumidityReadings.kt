@@ -1,4 +1,5 @@
 package com.apeman.homeassistant.domain.model
 
-class HumiditySensorReadings {
-}
+data class HumidityReadings (
+    val humidity: String?
+)
