@@ -11,10 +11,10 @@ import kotlinx.coroutines.*
 
 class CardsViewModel : ViewModel() {
     val temperatureDataSet = MutableLiveData<String>()
+    private val getTemperature = GetTemperatureUseCase()
 
     init {
         viewModelScope.launch {
-            val getTemperature = GetTemperatureUseCase()
             withContext(Dispatchers.IO) {
                 temperatureDataSet.postValue(getTemperature())
                 delay(2000)

@@ -22,5 +22,5 @@ class GetTemperatureUseCase {
         queryParamsMapper
     )
 
-    suspend operator fun invoke(): String? = repository.mapTemperature()
+    suspend operator fun invoke(): String? = repository.getTemperature()
 }
