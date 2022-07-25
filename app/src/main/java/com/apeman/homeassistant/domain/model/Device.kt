@@ -4,6 +4,6 @@ data class Device (
     val name: String,
     val room: String,
     val virtualPin: String,
-    val value: String,
+    var value: String,
     val separatorColor: Int
 )

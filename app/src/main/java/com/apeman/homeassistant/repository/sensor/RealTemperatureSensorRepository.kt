@@ -1,7 +1,6 @@
-package com.apeman.homeassistant.repository.device
+package com.apeman.homeassistant.repository.sensor
 
 import android.util.Log
-import com.apeman.homeassistant.domain.model.TemperatureReadings
 import com.apeman.homeassistant.infrastructure.remote.blynk.RetrofitRemoteDataSource
 import com.apeman.homeassistant.mapper.domain.HumidityMapper
 import com.apeman.homeassistant.mapper.domain.QueryParamsMapper

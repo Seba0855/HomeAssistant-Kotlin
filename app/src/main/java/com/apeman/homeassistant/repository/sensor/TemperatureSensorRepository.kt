@@ -1,6 +1,4 @@
-package com.apeman.homeassistant.repository.device
-
-import com.apeman.homeassistant.domain.model.TemperatureReadings
+package com.apeman.homeassistant.repository.sensor
 
 interface TemperatureSensorRepository {
     suspend fun getTemperature(): String?

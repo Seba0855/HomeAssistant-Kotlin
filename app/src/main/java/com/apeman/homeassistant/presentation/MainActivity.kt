@@ -6,7 +6,9 @@ import android.widget.Toast
 import androidx.appcompat.widget.TooltipCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.apeman.homeassistant.R
+import com.apeman.homeassistant.presentation.home.CardsAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

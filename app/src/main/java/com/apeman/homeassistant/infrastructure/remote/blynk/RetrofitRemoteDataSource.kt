@@ -1,7 +1,7 @@
 package com.apeman.homeassistant.infrastructure.remote.blynk
 
 import com.apeman.homeassistant.domain.usecase.TokenHelper
-import com.apeman.homeassistant.repository.device.BlynkAPI
+import com.apeman.homeassistant.repository.sensor.BlynkAPI
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

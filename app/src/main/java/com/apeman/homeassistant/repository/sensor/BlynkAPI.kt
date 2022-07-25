@@ -1,6 +1,5 @@
-package com.apeman.homeassistant.repository.device
+package com.apeman.homeassistant.repository.sensor
 
-import com.apeman.homeassistant.infrastructure.model.response.BlynkTemperatureResponse
 import com.apeman.homeassistant.infrastructure.model.response.BlynkTemperatureSensorResponse
 import retrofit2.Response
 import retrofit2.http.GET

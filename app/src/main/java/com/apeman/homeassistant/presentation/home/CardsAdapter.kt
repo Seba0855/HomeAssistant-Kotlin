@@ -1,5 +1,6 @@
 package com.apeman.homeassistant.presentation.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,7 @@ class CardsAdapter() : RecyclerView.Adapter<CardItemViewHolder>() {
     private var cards = emptyList<Device>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardItemViewHolder {
-        val view = parent.inflateNoAttach(R.layout.fragment_cards)
+        val view = parent.inflateNoAttach(R.layout.grid_item)
         return CardItemViewHolder(view)
     }
 
@@ -23,8 +24,8 @@ class CardsAdapter() : RecyclerView.Adapter<CardItemViewHolder>() {
 
     override fun getItemCount(): Int = cards.count()
 
-    fun setData(data: List<Device>) {
-        this.cards = data
+    fun setDevices(devices: List<Device>) {
+        cards = devices
         notifyDataSetChanged()
     }
 }

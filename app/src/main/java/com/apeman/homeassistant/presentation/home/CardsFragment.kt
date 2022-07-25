@@ -1,19 +1,19 @@
 package com.apeman.homeassistant.presentation.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.RecyclerView
 import com.apeman.homeassistant.R
 
 class CardsFragment : Fragment() {
     private val viewModel: CardsViewModel by viewModels()
-    private lateinit var tempIndicator: TextView
-    private lateinit var name: TextView
-    private lateinit var room: TextView
+    private val cardsAdapter = CardsAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -24,14 +24,12 @@ class CardsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tempIndicator = view.findViewById(R.id.value_indicator)
-        name = view.findViewById(R.id.name)
-        room = view.findViewById(R.id.roomIndicator)
+        view.findViewById<RecyclerView>(R.id.cardList).apply {
+            adapter = cardsAdapter
+        }
 
-        viewModel.temperatureDataSet.observe(viewLifecycleOwner) { sensorData ->
-            tempIndicator.text = sensorData
-            name.text = "Czujnik temperatury"
-            room.text = "Salon"
+        viewModel.deviceList.observe(viewLifecycleOwner) { deviceList ->
+            cardsAdapter.setDevices(deviceList)
         }
     }
 

@@ -5,8 +5,8 @@ import com.apeman.homeassistant.mapper.domain.HumidityMapper
 import com.apeman.homeassistant.mapper.domain.QueryParamsMapper
 import com.apeman.homeassistant.mapper.domain.TemperatureMapper
 import com.apeman.homeassistant.repository.device.MockDeviceRepository
-import com.apeman.homeassistant.repository.device.RealTemperatureSensorRepository
-import com.apeman.homeassistant.repository.device.TemperatureSensorRepository
+import com.apeman.homeassistant.repository.sensor.RealTemperatureSensorRepository
+import com.apeman.homeassistant.repository.sensor.TemperatureSensorRepository
 
 class GetTemperatureUseCase {
     private val blynkService = RetrofitRemoteDataSource()
