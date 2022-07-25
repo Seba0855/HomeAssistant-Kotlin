@@ -1,22 +1,30 @@
 package com.apeman.homeassistant.presentation.home
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.apeman.homeassistant.domain.model.Device
+import com.apeman.homeassistant.domain.usecase.GetDeviceListUseCase
 import com.apeman.homeassistant.domain.usecase.GetTemperatureUseCase
-import com.apeman.homeassistant.infrastructure.model.response.BlynkTemperatureResponse
-import com.apeman.homeassistant.repository.device.RealTemperatureSensorRepository
 import kotlinx.coroutines.*
 
 class CardsViewModel : ViewModel() {
-    val temperatureDataSet = MutableLiveData<String>()
+
+    private val temperatureDataSet = MutableLiveData<String>()
+    val deviceList = MutableLiveData<List<Device>>()
     private val getTemperature = GetTemperatureUseCase()
+    private val getDevices = GetDeviceListUseCase()
 
     init {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                temperatureDataSet.postValue(getTemperature())
+                with(getDevices()) {
+                    map { device ->
+                        device.value = getTemperature() ?: "--.-"
+                    }
+                    deviceList.postValue(this)
+                }
+
                 delay(2000)
             }
             temperatureDataSet.value

@@ -1,6 +1,16 @@
 package com.apeman.homeassistant.repository.device
 
-class MockDeviceRepository {
-    fun getTemperature() = "24.50"
-    fun getHumidity() = "43.02"
+import com.apeman.homeassistant.R
+import com.apeman.homeassistant.domain.model.Device
+
+class MockDeviceRepository : DeviceRepository {
+    override fun getDevices(): List<Device> = listOf(
+        Device(
+            "Czujnik temperatury",
+            "Salon",
+            "V0",
+            "Loading...",
+            R.color.orange
+        )
+    )
 }

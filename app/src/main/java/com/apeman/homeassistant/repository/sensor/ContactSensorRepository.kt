@@ -1,7 +1,6 @@
-package com.apeman.homeassistant.repository.device
+package com.apeman.homeassistant.repository.sensor
 
 import retrofit2.http.GET
-import retrofit2.http.Query
 import retrofit2.http.QueryMap
 
 interface ContactSensorRepository {
